@@ -1,155 +1,57 @@
-<img src="./images/hsph.png" alt="hsph Logo" width="300"><br>
+<img src="./images/hsph.png" alt="hsph Logo" width="400"><br>
 
-># Need to REVIEW !!
-
-# Lab 8 - RAG Foundations (EPI 264: Advanced Epidemiology of Aging)
-
-Welcome to the **Lab 6** repository. This project is part of a hands-on training module focused on **Large Language Models (LLMs)** and their application to clinical informatics and patient note analysis. You’ll work through Jupyter notebooks that demonstrate **Retrieval-Augmented Generation (RAG)**, semantic search, embeddings, and structured clinical summarization using local LLMs.
+# Lab 8 — Retrieval-Augmented Generation (RAG)  
+### EPI 264 — Advanced Epidemiology of Aging
 
 ---
 
-## ✅ Prerequisites
+## Case Study Continuation  
+**Post-Operative Benzodiazepines, Dementia, and Mortality**
 
-Please ensure the following are installed on your machine:
+In Lab 6, you:
 
-- **Python**: Version 3.12 or higher  
-- **Visual Studio Code (VS Code)**  
-- **Ollama CLI** (for local LLM inference)  
+- Built a structured dementia phenotype
+- Validated it against a physician gold standard
+- Observed sensitivity and specificity limitations
 
----
+Now we ask:
 
-## 🛠️ Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/v-mourajr/i2b2-llm-workshop.git
-cd i2b2-llm-workshop
-````
-
-### 2. Create and Activate a Virtual Environment
-
-```bash
-
-#Create the Environment on MacOS/Linux or Windows:
-python3 -m venv i2b2_llm
-
-# Activate On MacOS/Linux:
-source i2b2_llm/bin/activate  
-
-# Activate On Windows: 
-.\i2b2_llm\Scripts\activate
-```
-
-### 3. Install Python Dependencies
-
-```bash
-pip install -r requirements.txt
-```
+> Can we improve dementia detection using clinical notes?
 
 ---
 
-## 🧠 Model Setup with Ollama
+## Why RAG?
 
-We use **Qwen2**, a local open LLM, for this workshop.
+Dementia and cognitive concerns are often:
+- Undercoded in diagnosis tables
+- Documented only in narrative notes
+- Described using non-standard language
 
-### 1. Download and Install Ollama
+Retrieval-Augmented Generation (RAG) allows us to:
 
-* Visit [https://ollama.com/download](https://ollama.com/download)
-* Choose your operating system and follow the installation steps
-* After installation, open a terminal and verify:
-
-```bash
-ollama -v
-```
-
-### 2. Pull the Qwen2 Model
-
-Run this command to download the model locally:
-
-```bash
-ollama pull qwen2
-```
-
-Once downloaded, the model can be used via LangChain using:
-
-```python
-from langchain_ollama import ChatOllama
-model = ChatOllama(model="qwen2")
-```
-> You can find a list of all available Ollama models at [https://ollama.com/library](https://ollama.com/library)
-
-## 💻 Recommended Development Environment: Visual Studio Code
-
-We recommend using [Visual Studio Code (VS Code)](https://code.visualstudio.com/) with the following extensions:
-
-### 1. Install VS Code
-
-* Download and install: [https://code.visualstudio.com/](https://code.visualstudio.com/)
-
-### 2. Install Required Extensions
-
-* Open VS Code
-* Go to the **Extensions panel** (`Ctrl+Shift+X` or click the Extensions icon)
-* Install:
-
-  * **Python** (by Microsoft)
-  * **Jupyter** (by Microsoft)
-
-These enable full support for notebooks inside VS Code.
+1. Retrieve relevant notes for a patient
+2. Provide those notes as context to an LLM
+3. Ask the model to reason about cognitive status
 
 ---
 
-## ▶️ Running the Notebooks in VS Code
+## Objectives of This Lab
 
-You’ll run all notebooks **inside VS Code**, not in your browser.
+You will:
 
-### 1. Open Visual Studio Code
-
-### 2. Open a Notebook
-
-* In VS Code, navigate to the desired `.ipynb` file (e.g., `1_chat_models_basic.ipynb`)
-* Click to open it
-
-### 3. Select Python Kernel
-
-* At the top right of the notebook interface, select the Python interpreter from your virtual environment (e.g., `i2b2_llm`)
-
-### 4. Run Cells
-
-* Run individual cells with `Shift + Enter`, or click **Run All** in the top menu
+1. Load cleaned notes from Lab 6
+2. Create text embeddings
+3. Build a simple retrieval index
+4. Implement a RAG prompt to classify dementia
+5. Compare RAG classification vs structured phenotype
+6. Evaluate sensitivity/specificity against gold standard
 
 ---
 
-## 📘 Notebooks Overview
+## Deliverables
 
-### 1. `1_chat_models_basic.ipynb`
-
-* **Learn the basics of chat-based LLMs** using system and user messages
-* Includes structured prompts and inference using Qwen2 locally
-
-### 2. `2_rag_embedding.ipynb`
-
-* **Hands-on implementation of RAG** using FAISS and local embeddings
-* Perform similarity search with score filtering
-
-### 3. `3_rag_chromadb.ipynb`
-
-* **Full RAG pipeline using ChromaDB** and Maximal Marginal Relevance (MMR)
-* Structured summarization from retrieved notes using a local LLM
-
-![roadmap](./images/roadmap.png)
-
-
-## 📜 License
-
-Developed by Valdery Moura Junior, PhD, MBA, at the **Center for AI and Biomedical Informatics for the Learning Healthcare System (CAIBILS)**, Massachusetts General Brigham, for the i2b2 Annual Symposium.
-
-This material is for educational use only. No guarantees are made regarding accuracy or completeness. Unless stated otherwise, it may be shared and adapted with proper attribution.
-
----
-By following this guide, you’ll be ready to explore and apply cutting-edge LLM techniques to real-world patient notes using open tools and models.
-**Let’s build smarter healthcare together.**
-
-
-# hsph_epi264_lab8_rag
+1. RAG-based dementia classification
+2. Comparison table: Structured vs RAG vs Gold
+3. Brief interpretation:
+   - Did RAG recover false negatives?
+   - What new biases might RAG introduce?
