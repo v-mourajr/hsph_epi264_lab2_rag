@@ -1,6 +1,6 @@
 <img src="./images/hsph.png" alt="hsph Logo" width="400"><br>
 
-# Lab 8 — Retrieval-Augmented Generation (RAG)  
+# Lab 2 — Retrieval-Augmented Generation (RAG)  
 ### EPI 264 — Advanced Epidemiology of Aging
 
 ---
@@ -8,7 +8,7 @@
 ## Case Study Continuation  
 **Post-Operative Benzodiazepines, Dementia, and Mortality**
 
-In Lab 6, you:
+In Lab 1, you:
 
 - Built a structured dementia phenotype
 - Validated it against a physician gold standard
