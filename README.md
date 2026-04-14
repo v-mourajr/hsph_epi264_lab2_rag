@@ -46,13 +46,12 @@ cd hsph_epi264_lab2_rag
 
 ```bash
 
-#Create the Environment on MacOS/Linux or Windows:
+# Create and Activate the Environment On MacOS/Linux:
 python3 -m venv epi264_lab2
-
-# Activate On MacOS/Linux:
 source epi264_lab2/bin/activate  
 
-# Activate On Windows: 
+# Create and Activate the Environment Windows: 
+python -m venv epi264_lab2
 .\epi264_lab2\Scripts\activate
 ```
 
